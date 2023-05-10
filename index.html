@@ -19,7 +19,50 @@
             }
             console.log(float);
         }
-        console.log(getComputerChoice());
+        
+        /*let playerSelection = prompt("What is your move? Rock, paper or scissors")*/
+
+        function playGame(computer, player) {
+            if (player == "scissors") {
+                if (computer == "scissors") {
+                    return("the game is a draw")
+                } else if (computer == "rock") {
+                    return("you lose")
+                } else {
+                    return ("you win")
+                }
+            }
+
+            else if (player == "rock") {
+                if (computer == "rock") {
+                    return("the game is a draw")
+                } else if (computer == "paper") {
+                    return("you lose")
+                } else {
+                    return ("you win")
+                }
+            }
+
+            else if (player == "paper") {
+                if (computer == "paper") {
+                    return("the game is a draw")
+                } else if (computer == "scissors") {
+                    return("you lose")
+                } else {
+                    return ("you win")
+                }
+            }
+
+            else {
+                return("You did not pick a valid choice");
+            }
+        }
+
+        
+                
+
+            
+        
     </script>
 </body>
 </html>
