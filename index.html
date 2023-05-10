@@ -7,6 +7,19 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <script>
+        function getComputerChoice() {
+            let float = Math.random();
+            if (float<1/3) {
+                return("rock");
+            } else if (float>2/3) {
+                return("paper");
+            } else {
+                return ("scissors");
+            }
+            console.log(float);
+        }
+        console.log(getComputerChoice());
+    </script>
 </body>
 </html>
