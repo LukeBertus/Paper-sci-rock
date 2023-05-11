@@ -15,14 +15,9 @@
             } else if (float>2/3) {
                 return("paper");
             } else {
-                return ("scissors");
+                return("scissors");
             }
-            console.log(float);
         }
-        
-        let playerSelection = prompt("What is your move? Rock, paper or scissors").toLowerCase();
-        console.log(playerSelection);
-        
 
         function playGame(computer, player) {
             if (player == "scissors") {
@@ -35,7 +30,7 @@
                 }
             }
 
-            else if (player == "rock") {
+            else if (player == "rock") { 
                 if (computer == "rock") {
                     return("the game is a draw")
                 } else if (computer == "paper") {
@@ -59,18 +54,42 @@
                 return("You did not pick a valid choice");
             }
         }
-
+        
         function game() {
-            console.log(`The computer chose ${getComputerChoice()}, ${playGame(getComputerChoice(),playerSelection)}`);
-            let playerScore = 0;
-            let computerScore = 0;
-            if (playGame(getComputerChoice(),playerSelection)=="you win") {
-                
+            let playerSelection = prompt("What is your move? Rock, paper or scissors").toLowerCase();
+            let computerChoice = getComputerChoice();
+            console.log(`The computer chose ${computerChoice}, ${playGame(computerChoice,playerSelection)}`);
+            if (playGame(computerChoice,playerSelection)=="you win") {
+                playerScore++;
+            } else if (playGame(computerChoice,playerSelection)=="you lose") {
+                computerScore++;
+            } else if (playGame(computerChoice,playerSelection) == "the game is a draw") {
+                playerScore++;
+                computerScore++;
             }
+            console.log(computerChoice);
             console.log(`The score is ${playerScore}-${computerScore}`);
-
         }
 
+        function matchResult(player, computer) {
+            if (player>computer) {
+                console.log("Congratulations, you win")
+            } else if (computer>player) {
+                console.log("The computer wins, better luck next time")
+            } else {
+                console.log("The game is a draw")
+            }
+        }
+        let playerScore = 0;
+        let computerScore = 0;
+        
+        game();
+        game();
+        game();
+        game();
+        game();
+        
+        matchResult(playerScore, computerScore);
         
         
                 
