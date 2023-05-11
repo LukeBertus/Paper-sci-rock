@@ -20,7 +20,9 @@
             console.log(float);
         }
         
-        let playerSelection = prompt("What is your move? Rock, paper or scissors")
+        let playerSelection = prompt("What is your move? Rock, paper or scissors").toLowerCase();
+        console.log(playerSelection);
+        
 
         function playGame(computer, player) {
             if (player == "scissors") {
@@ -58,7 +60,18 @@
             }
         }
 
-        console.log(`The computer chose ${getComputerChoice()}, ${playGame(getComputerChoice(),playerSelection)}`);
+        function game() {
+            console.log(`The computer chose ${getComputerChoice()}, ${playGame(getComputerChoice(),playerSelection)}`);
+            let playerScore = 0;
+            let computerScore = 0;
+            if (playGame(getComputerChoice(),playerSelection)=="you win") {
+                
+            }
+            console.log(`The score is ${playerScore}-${computerScore}`);
+
+        }
+
+        
         
                 
 
