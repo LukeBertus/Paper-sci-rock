@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+    <button id="rock">Rock</button>
+    <button id="paper">Paper</button>
+    <button id="scissors">Scissors</button> 
+    <h1 class="text"></h1>
+    <p class="score"></p>
+    <p class="result"></p>
 <body>
     <script>
         function getComputerChoice() {
@@ -56,46 +62,68 @@
         }
         
         function game() {
-            let playerSelection = prompt("What is your move? Rock, paper or scissors").toLowerCase();
+
             let computerChoice = getComputerChoice();
-            console.log(`The computer chose ${computerChoice}, ${playGame(computerChoice,playerSelection)}`);
+            text.textContent = (`The computer chose ${computerChoice}, ${playGame(computerChoice,playerSelection)}`);
             if (playGame(computerChoice,playerSelection)=="you win") {
                 playerScore++;
             } else if (playGame(computerChoice,playerSelection)=="you lose") {
                 computerScore++;
-            } else if (playGame(computerChoice,playerSelection) == "the game is a draw") {
-                playerScore++;
-                computerScore++;
+            
             }
-            console.log(computerChoice);
-            console.log(`The score is ${playerScore}-${computerScore}`);
+            score.textContent = (`The score is ${playerScore}-${computerScore}`);
         }
+        
 
         function matchResult(player, computer) {
+            rock.removeEventListener('click', clickHandler);
+            paper.removeEventListener('click', clickHandler);
+            scissors.removeEventListener('click', clickHandler);
             if (player>computer) {
-                console.log("Congratulations, you win")
+                result.textContent = ("Congratulations, you win")
+                page.style.cssText = "background-color: green;"
             } else if (computer>player) {
-                console.log("The computer wins, better luck next time")
+                result.textContent = ("The computer wins, better luck next time")
+                page.style.cssText = "background-color: red;"
             } else {
-                console.log("The game is a draw")
+                result.textContent = ("The game is a draw")
+                page.style.cssText = "background-color: yellow;"
             }
         }
+
+        function clickHandler(e) {
+            playerSelection = e.target.id;
+            game();
+            if (playerScore == 5 || computerScore == 5) {
+                matchResult(playerScore, computerScore);
+            }
+
+            
+            
+        }
+        
         let playerScore = 0;
         let computerScore = 0;
         
-        game();
-        game();
-        game();
-        game();
-        game();
-        
-        matchResult(playerScore, computerScore);
-        
-        
-                
+        const rock = document.querySelector("#rock");
+        rock.addEventListener('click', clickHandler);
 
-            
+
+        const paper = document.querySelector("#paper");
+        paper.addEventListener('click', clickHandler);
+
+        const scissors = document.querySelector("#scissors");
+        scissors.addEventListener('click', clickHandler);
         
+        const text = document.querySelector(".text");
+        const score = document.querySelector(".score");
+        const result = document.querySelector(".result");
+        const page = document.querySelector("body");
+
+        
+
+        
+       
     </script>
 </body>
 </html>
